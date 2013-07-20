@@ -73,6 +73,26 @@ libxkbcommon_la_SOURCES = \
 	src/utils.c \
 	src/utils.h
 
+if ENABLE_X11
+pkgconfig_DATA += xkbcommon-x11.pc
+
+xkbcommon_x11includedir = $(xkbcommonincludedir)
+xkbcommon_x11include_HEADERS = \
+	xkbcommon/xkbcommon-x11.h
+
+lib_LTLIBRARIES += libxkbcommon-x11.la
+
+libxkbcommon_x11_la_CFLAGS = $(AM_CFLAGS) $(XCB_XKB_CFLAGS)
+libxkbcommon_x11_la_CPPFLAGS = $(AM_CPPFLAGS) -I$(top_srcdir)/src/x11
+libxkbcommon_x11_la_LIBADD = libxkbcommon.la $(XCB_XKB_LIBS)
+
+libxkbcommon_x11_la_SOURCES = \
+	src/x11/keymap.c \
+	src/x11/state.c \
+	src/x11/util.c \
+	src/x11/x11-priv.h
+endif ENABLE_X11
+
 BUILT_SOURCES = \
 	src/xkbcomp/parser.c \
 	src/xkbcomp/parser.h
@@ -103,7 +123,6 @@ install-data-local:: doc
 
 uninstall-local::
 	rm -rf $(DESTDIR)$(htmldir)
-
 endif HAVE_DOXYGEN
 endif ENABLE_DOCS
 
@@ -164,7 +183,6 @@ test_interactive_LDADD = $(TESTS_LDADD)
 
 check_PROGRAMS += \
 	test/interactive
-
 endif BUILD_LINUX_TESTS
 
 EXTRA_DIST += \

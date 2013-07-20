@@ -117,6 +117,22 @@ max(int misc, int other)
     return (misc > other) ? misc : other;
 }
 
+/*
+ * Return the bit position of the most significant bit.
+ * Note: this is 1-based! It's more useful this way, and returns 0 when
+ * mask is all 0s.
+ */
+static inline int
+msb_pos(uint32_t mask)
+{
+    int pos = 0;
+    while (mask) {
+        pos++;
+        mask >>= 1;
+    }
+    return pos;
+}
+
 bool
 map_file(FILE *file, const char **string_out, size_t *size_out);
 

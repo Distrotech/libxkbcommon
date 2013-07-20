@@ -137,10 +137,22 @@ if ! test "x$DEFAULT_XKB_OPTIONS" = x; then
                        [Default XKB options])
 fi
 
+AC_ARG_ENABLE([x11],
+    [AS_HELP_STRING([--enable-x11],
+        [Enable support for creating keymaps with the X11 protocol (default: no)])],
+    [with_x11=yes], [])
+if test "x$with_x11" = xyes; then
+    PKG_CHECK_MODULES([XCB_XKB], [xcb-xkb], [],
+        [AC_MSG_ERROR([--enable-x11 was passed but xcb-xkb is missing])])
+fi
+AM_CONDITIONAL([ENABLE_X11], [test "x$with_x11" = xyes])
+
 AC_CONFIG_FILES([
     Makefile
     xkbcommon-uninstalled.pc
     xkbcommon.pc
+    xkbcommon-x11.pc
+    xkbcommon-x11-uninstalled.pc
     doc/Doxyfile
 ])
 AC_OUTPUT
