@@ -185,6 +185,19 @@ check_PROGRAMS += \
 	test/interactive-evdev
 endif BUILD_LINUX_TESTS
 
+if ENABLE_X11
+TESTS += \
+	test/x11
+TESTS_X11_LDADD = $(TESTS_LDADD) libxkbcommon-x11.la
+
+test_x11_LDADD = $(TESTS_X11_LDADD)
+test_interactive_x11_LDADD = $(TESTS_X11_LDADD) $(XCB_XKB_LIBS)
+test_interactive_x11_CFLAGS = $(AM_CFLAGS) $(XCB_XKB_CFLAGS)
+
+check_PROGRAMS += \
+	test/interactive-x11
+endif ENABLE_X11
+
 EXTRA_DIST += \
 	test/data
 
