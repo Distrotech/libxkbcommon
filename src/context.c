@@ -334,7 +334,7 @@ xkb_atom_lookup(struct xkb_context *ctx, const char *string)
     return atom_lookup(ctx->atom_table, string, strlen(string));
 }
 
-xkb_atom_t
+XKB_EXPORT_PRIVATE xkb_atom_t
 xkb_atom_intern(struct xkb_context *ctx, const char *string, size_t len)
 {
     return atom_intern(ctx->atom_table, string, len, false);
@@ -358,7 +358,7 @@ xkb_atom_text(struct xkb_context *ctx, xkb_atom_t atom)
     return atom_text(ctx->atom_table, atom);
 }
 
-void
+XKB_EXPORT_PRIVATE void
 xkb_log(struct xkb_context *ctx, enum xkb_log_level level,
         const char *fmt, ...)
 {

@@ -140,6 +140,9 @@ unmap_file(const char *str, size_t size);
 # define XKB_EXPORT
 #endif
 
+/* For symbols which need to be visible but are not part of the API. */
+#define XKB_EXPORT_PRIVATE XKB_EXPORT
+
 #if defined(__GNUC__) && ((__GNUC__ * 100 + __GNUC_MINOR__) >= 203)
 # define ATTR_PRINTF(x,y) __attribute__((__format__(__printf__, x, y)))
 #else /* not gcc >= 2.3 */
