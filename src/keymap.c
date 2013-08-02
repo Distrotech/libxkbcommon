@@ -73,7 +73,7 @@ update_builtin_keymap_fields(struct xkb_keymap *keymap)
         { .name = xkb_atom_intern_literal(ctx, "Mod5"),    .type = MOD_REAL });
 }
 
-static struct xkb_keymap *
+struct xkb_keymap *
 xkb_keymap_new(struct xkb_context *ctx,
                enum xkb_keymap_format format,
                enum xkb_keymap_compile_flags flags)

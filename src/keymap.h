@@ -427,6 +427,11 @@ wrap_group_into_range(int32_t group,
                       enum xkb_range_exceed_type out_of_range_group_action,
                       xkb_layout_index_t out_of_range_group_number);
 
+struct xkb_keymap *
+xkb_keymap_new(struct xkb_context *ctx,
+               enum xkb_keymap_format format,
+               enum xkb_keymap_compile_flags flags);
+
 struct xkb_keymap_format_ops {
     bool (*keymap_new_from_names)(struct xkb_keymap *keymap,
                                   const struct xkb_rule_names *names);
