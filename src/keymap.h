@@ -418,6 +418,9 @@ XkbKeyByName(struct xkb_keymap *keymap, xkb_atom_t name, bool use_aliases);
 xkb_atom_t
 XkbResolveKeyAlias(struct xkb_keymap *keymap, xkb_atom_t name);
 
+void
+xkb_escape_section_name(char *name);
+
 xkb_layout_index_t
 wrap_group_into_range(int32_t group,
                       xkb_layout_index_t num_groups,

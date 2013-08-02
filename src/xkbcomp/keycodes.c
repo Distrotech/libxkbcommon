@@ -607,7 +607,7 @@ CopyKeyNamesToKeymap(struct xkb_keymap *keymap, KeyNamesInfo *info)
     unsigned i;
 
     keymap->keycodes_section_name = strdup_safe(info->name);
-    XkbEscapeMapName(keymap->keycodes_section_name);
+    xkb_escape_section_name(keymap->keycodes_section_name);
 
     if (info->min_key_code != XKB_KEYCODE_INVALID) {
         keymap->min_key_code = info->min_key_code;
