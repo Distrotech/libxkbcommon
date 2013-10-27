@@ -27,11 +27,17 @@ xkbcommonincludedir = $(includedir)/xkbcommon
 xkbcommoninclude_HEADERS = \
 	xkbcommon/xkbcommon.h \
 	xkbcommon/xkbcommon-compat.h \
+	xkbcommon/xkbcommon-compose.h \
 	xkbcommon/xkbcommon-keysyms.h \
 	xkbcommon/xkbcommon-names.h
 
 lib_LTLIBRARIES = libxkbcommon.la
 libxkbcommon_la_SOURCES = \
+	src/compose/compose.c \
+	src/compose/compose.h \
+	src/compose/parser.c \
+	src/compose/parser.h \
+	src/compose/state.c \
 	src/xkbcomp/action.c \
 	src/xkbcomp/action.h \
 	src/xkbcomp/ast.h \
