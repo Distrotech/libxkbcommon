@@ -142,7 +142,8 @@ TESTS = \
 	test/stringcomp \
 	test/buffercomp \
 	test/log \
-	test/atom
+	test/atom \
+	test/compose
 TESTS_LDADD = libtest.la
 
 test_keysym_LDADD = $(TESTS_LDADD)
@@ -158,6 +159,7 @@ test_atom_LDADD = $(TESTS_LDADD)
 test_rmlvo_to_kccgst_LDADD = $(TESTS_LDADD)
 test_print_compiled_keymap_LDADD = $(TESTS_LDADD)
 test_bench_key_proc_LDADD = $(TESTS_LDADD) -lrt
+test_compose_LDADD = $(TESTS_LDADD) -lrt
 
 check_PROGRAMS = \
 	$(TESTS) \
