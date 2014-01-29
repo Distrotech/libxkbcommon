@@ -28,6 +28,7 @@
 /* Don't use compat names in internal code. */
 #define _XKBCOMMON_COMPAT_H
 #include "xkbcommon/xkbcommon.h"
+#include "xkbcommon/xkbcommon-compose.h"
 #include "utils.h"
 
 /* The offset between KEY_* numbering, and keycodes in the XKB evdev
